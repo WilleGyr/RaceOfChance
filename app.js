@@ -263,18 +263,22 @@ function setupRace() {
     buildCarShape(group, team.color);
     els.carsLayer.appendChild(group);
 
+    // Every car starts on the exact same point of the start line — no head start.
+    // Lateral lanes only spread them visually so they don't overlap pixel-perfectly.
+    const baseSpeed = 215 + Math.random() * 55;
+    const lateralJitter = (Math.random() - 0.5) * 1.5;
+
     return {
       driver,
       team,
       element: group,
-      // Stagger grid behind the start line, alternating across 4 lanes
-      distance: -i * 14,
-      baseSpeed: 215 + Math.random() * 55,
+      distance: 0,
+      baseSpeed,
       currentSpeed: 0,
-      targetSpeed: 0,
-      laneOffset: laneOffsets[i % laneOffsets.length],
+      targetSpeed: baseSpeed * (0.62 + Math.random() * 0.78),
+      laneOffset: laneOffsets[i % laneOffsets.length] + lateralJitter,
       finishOrder: null,
-      changeTimer: 0,
+      changeTimer: Math.random() * 0.45,
     };
   });
 
