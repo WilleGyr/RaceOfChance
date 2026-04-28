@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Race of Chance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main id="setup" class="screen active">
+    <header class="setup-header">
+      <p class="eyebrow">F1 Slumpgenerator</p>
+      <h1>Race of Chance</h1>
+      <p class="subtitle">Lägg till upp till 10 förare. Loppet avgör ordningen.</p>
+    </header>
+    <section class="drivers" id="drivers" aria-label="Förare"></section>
+    <div class="setup-actions">
+      <button id="addDriver" class="btn btn-secondary" type="button">+ Lägg till förare</button>
+      <button id="startRace" class="btn btn-primary" type="button" disabled>Starta loppet</button>
+    </div>
+  </main>
+
+  <main id="race" class="screen">
+    <div class="race-stage">
+      <svg id="trackSvg" viewBox="120 150 1080 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path id="track-shadow" class="track-shadow"></path>
+        <path id="track" class="track"></path>
+        <path id="track-line" class="track-line"></path>
+        <line id="finish-line"></line>
+        <g id="cars"></g>
+      </svg>
+      <aside class="leaderboard">
+        <div class="lb-header">
+          <span>Position</span>
+        </div>
+        <ol id="standings" class="standings"></ol>
+      </aside>
+      <div class="countdown" id="countdown"></div>
+    </div>
+  </main>
+
+  <main id="results" class="screen">
+    <header class="results-header">
+      <p class="eyebrow">Slutresultat</p>
+      <h2>Ordningen är klar</h2>
+    </header>
+    <ol id="finalOrder" class="final-order"></ol>
+    <button id="restart" class="btn btn-primary" type="button">Nytt lopp</button>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
